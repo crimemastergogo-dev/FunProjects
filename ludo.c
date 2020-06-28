@@ -842,6 +842,7 @@ void TokenMovement
                     boardIndex = TokenA[tokenIndex-1];
                     changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_A);
                 }
+                break;
             }
             else if (1 == currentOpenToken(p_player,TURN_OF_PLAYER_A))
             {
@@ -895,14 +896,13 @@ void TokenMovement
                         /*If dice roll is like 6,5*/
                         else
                         {
-                            fprintf(stdout,"Which Token You want to move \n");
-                            scanf("%d",&tokenIndex);
                             TokenA[tokenIndex-1] += Index; 
                             boardIndex = TokenA[tokenIndex-1];
                             changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_A);
                         }
                     }
                 }
+                break;
             }
             if (2 == currentOpenToken(p_player,TURN_OF_PLAYER_A))
             {
@@ -1019,6 +1019,28 @@ void TokenMovement
                         }
                     }
                 }
+                else
+                {
+                    fprintf(stdout,"Which one do you wanna move:\n");
+                    scanf("%d",&tokenIndex);
+                    if((mapTokenInput(tokenIndex) & p_player->TokenStatusPlayerA))
+                    {
+                        fprintf(stdout,"Token has already reached finish ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                    else if ((mapTokenInputForClosedToken(tokenIndex) & p_player->TokenStatusPlayerA))
+                    {
+                        TokenA[tokenIndex-1] += DiceNum; 
+                        boardIndex = TokenA[tokenIndex-1];
+                        changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_A);
+                    }
+                    else
+                    {
+                        fprintf(stdout,"Token is at HOME ...!!! skipping your Turn:\n");
+                        break;
+                    }
+
+                }
             }
             break;
         }
@@ -1072,6 +1094,7 @@ void TokenMovement
                     boardIndex = TokenB[tokenIndex-1];
                     changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_B);
                 }
+                break;
             }
             else if (1 == currentOpenToken(p_player,TURN_OF_PLAYER_B))
             {
@@ -1124,14 +1147,13 @@ void TokenMovement
                         /*If dice roll is like 6,5*/
                         else
                         {
-                            fprintf(stdout,"Which Token You want to move \n");
-                            scanf("%d",&tokenIndex);
                             TokenB[tokenIndex-1] += Index; 
                             boardIndex = TokenB[tokenIndex-1];
                             changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_B);
                         }
                     }
                 }
+                break;
             }
             if (2 == currentOpenToken(p_player,TURN_OF_PLAYER_B))
             {
@@ -1247,6 +1269,27 @@ void TokenMovement
                         }
                     }
                 }
+                else
+                {
+                    fprintf(stdout,"Which one do you wanna move:\n");
+                    scanf("%d",&tokenIndex);
+                    if((mapTokenInput(tokenIndex) & p_player->TokenStatusPlayerB))
+                    {
+                        fprintf(stdout,"Token has already reached finish ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                    else if ((mapTokenInputForClosedToken(tokenIndex) & p_player->TokenStatusPlayerB))
+                    {
+                        TokenB[tokenIndex-1] += DiceNum; 
+                        boardIndex = TokenB[tokenIndex-1];
+                        changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_B);
+                    }
+                    else
+                    {
+                        fprintf(stdout,"Token is at HOME ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                }
             }
             break;
         }
@@ -1300,6 +1343,7 @@ void TokenMovement
                     boardIndex = TokenC[tokenIndex-1];
                     changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_C);
                 }
+                break;
             }
             else if (1 == currentOpenToken(p_player,TURN_OF_PLAYER_C))
             {
@@ -1352,14 +1396,13 @@ void TokenMovement
                         /*If dice roll is like 6,5*/
                         else
                         {
-                            fprintf(stdout,"Which Token You want to move \n");
-                            scanf("%d",&tokenIndex);
                             TokenC[tokenIndex-1] += Index; 
                             boardIndex = TokenC[tokenIndex-1];
                             changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_C);
                         }
                     }
                 }
+                break;
             }
             if (2 == currentOpenToken(p_player,TURN_OF_PLAYER_C))
             {
@@ -1475,6 +1518,27 @@ void TokenMovement
                         }
                     }
                 }
+                else
+                {
+                    fprintf(stdout,"Which one do you wanna move:\n");
+                    scanf("%d",&tokenIndex);
+                    if((mapTokenInput(tokenIndex) & p_player->TokenStatusPlayerC))
+                    {
+                        fprintf(stdout,"Token has already reached finish ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                    else if ((mapTokenInputForClosedToken(tokenIndex) & p_player->TokenStatusPlayerC))
+                    {
+                        TokenC[tokenIndex-1] += DiceNum; 
+                        boardIndex = TokenC[tokenIndex-1];
+                        changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_C);
+                    }
+                    else
+                    {
+                        fprintf(stdout,"Token is at HOME ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                }
             }
             break;
         }
@@ -1528,6 +1592,7 @@ void TokenMovement
                     boardIndex = TokenD[tokenIndex-1];
                     changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_D);
                 }
+                break;
             }
             else if (1 == currentOpenToken(p_player,TURN_OF_PLAYER_D))
             {
@@ -1588,6 +1653,7 @@ void TokenMovement
                         }
                     }
                 }
+                break;
             }
             if (2 == currentOpenToken(p_player,TURN_OF_PLAYER_D))
             {
@@ -1703,6 +1769,27 @@ void TokenMovement
                         }
                     }
                 }
+                else
+                {
+                    fprintf(stdout,"Which one do you wanna move:\n");
+                    scanf("%d",&tokenIndex);
+                    if((mapTokenInput(tokenIndex) & p_player->TokenStatusPlayerD))
+                    {
+                        fprintf(stdout,"Token has already reached finish ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                    else if ((mapTokenInputForClosedToken(tokenIndex) & p_player->TokenStatusPlayerD))
+                    {
+                        TokenD[tokenIndex-1] += DiceNum; 
+                        boardIndex = TokenD[tokenIndex-1];
+                        changeTokenPos(B_Status,P_Status,tokenIndex-1,boardIndex, TURN_OF_PLAYER_D);
+                    }
+                    else
+                    {
+                        fprintf(stdout,"Token is at HOME ...!!! skipping your Turn:\n");
+                        break;
+                    }
+                }
             }
             break;
         }
@@ -1759,7 +1846,16 @@ void commenceRound
             {
                 fprintf(stdout,"User A's Total is %d\n",dice = Rollthedice('A'));
 
-                TokenMovement(TURN_OF_PLAYER_A,B_Status,P_Status,dice);
+                if (18 > dice)
+                {
+                    TokenMovement(TURN_OF_PLAYER_A,B_Status,P_Status,dice);
+                }
+                else
+                {
+                    fprintf(stderr,"You know the rules...!!! Skipping Your turn...!!!\n");
+                    ptr = ptr->next;
+                    break;
+                }
 
                 if (AlltokensReachedFinsish(*P_Status))
                 {
@@ -1777,7 +1873,17 @@ void commenceRound
             {
                 fprintf(stdout,"User B's Total is %d\n",dice = Rollthedice('B'));
 
+                if (18 > dice)
+                {
                 TokenMovement(TURN_OF_PLAYER_B,B_Status,P_Status,dice);
+                }
+                else
+                {
+                    fprintf(stderr,"You know the rules...!!! Skipping Your turn...!!!\n");
+                    ptr = ptr->next;
+                    break;
+                }
+
                 if (AlltokensReachedFinsish(*P_Status))
                 {
                     winner++;
@@ -1794,7 +1900,17 @@ void commenceRound
             {
                 fprintf(stdout,"User C's Total is %d\n",dice = Rollthedice('C'));
 
-                TokenMovement(TURN_OF_PLAYER_C,B_Status,P_Status,dice);
+                if (18 > dice)
+                {
+                    TokenMovement(TURN_OF_PLAYER_C,B_Status,P_Status,dice);
+                }
+                else
+                {
+                    fprintf(stderr,"You know the rules...!!! Skipping Your turn...!!!\n");
+                    ptr = ptr->next;
+                    break;
+                }
+
                 if (AlltokensReachedFinsish(*P_Status))
                 {
                     winner++;
@@ -1811,7 +1927,17 @@ void commenceRound
             {
                 fprintf(stdout,"User D's Total is %d\n",dice = Rollthedice('D'));
 
-                TokenMovement(TURN_OF_PLAYER_D,B_Status,P_Status,dice);
+                if (18 > dice)
+                {
+                    TokenMovement(TURN_OF_PLAYER_D,B_Status,P_Status,dice);
+                }
+                else
+                {
+                    fprintf(stderr,"You know the rules...!!! Skipping Your turn...!!!\n");
+                    ptr = ptr->next;
+                    break;
+                }
+
                 if (AlltokensReachedFinsish(*P_Status))
                 {
                     winner++;
@@ -1868,35 +1994,6 @@ int main()
     p_PlayerStatus->choice = p_BoardStatus->choice = MapPlayerInput(playerNum); 
     LoadingPlayers(&p_CurrentPlayer,MapPlayerInput(playerNum));
 
-
-#if 0
-    //    for (int i = 0; i< 10 ; i++)
-    fprintf(stdout,"User A's Total is %d\n",Rollthedice('A'));
-
-    /*Testing Display and count*/
-    DisplayCircularLinkList(p_CurrentPlayer);
-    fprintf(stdout,"Node Count %d\n",NodeCount(p_CurrentPlayer));
-
-    /*Testing deletion*/
-    DeleteByValue(&p_CurrentPlayer,TURN_OF_PLAYER_A);
-    DisplayCircularLinkList(p_CurrentPlayer);
-    fprintf(stdout,"Node Count %d\n",NodeCount(p_CurrentPlayer));
-    //DeleteByValue(&p_CurrentPlayer,TURN_OF_PLAYER_B);
-    //DisplayCircularLinkList(p_CurrentPlayer);
-    //fprintf(stdout,"Node Count %d\n",NodeCount(p_CurrentPlayer));
-    //DeleteByValue(&p_CurrentPlayer,TURN_OF_PLAYER_C);
-    //DisplayCircularLinkList(p_CurrentPlayer);
-    //fprintf(stdout,"Node Count %d\n",NodeCount(p_CurrentPlayer));
-    //DeleteByValue(&p_CurrentPlayer,TURN_OF_PLAYER_D);
-    //DisplayCircularLinkList(p_CurrentPlayer);
-    fprintf(stdout,"Node Count %d\n",NodeCount(p_CurrentPlayer));
-
-    /*Testing Run summary*/
-    fprintf(stdout,"After round %d counts are -\n",round);
-    roundSummary(p_PlayerStatus);
-#endif
-
-#if 1
     /*Commencing Game*/
     do
     {
@@ -1904,14 +2001,8 @@ int main()
         commenceRound(p_CurrentPlayer,&p_BoardStatus,&p_PlayerStatus);
         fprintf(stdout,"After round %d counts are - \n",round);
         roundSummary(p_PlayerStatus);
-#if 0
-        if (AlltokensReachedFinsish(p_PlayerStatus))
-        {
-            DeleteByValue(&p_CurrentPlayer,AlltokensReachedFinsish(p_PlayerStatus));
-        }
-#endif
     }while(1 <  NodeCount(p_CurrentPlayer));
-#endif
+
     /*Freeing Memory Associated with Player and board*/
     if (NULL != p_PlayerStatus)
     {
